@@ -1,5 +1,5 @@
-import React, {createContext, useState} from 'react';
-import {Platform} from 'react-native';
+import React, {createContext, useEffect, useState} from 'react';
+import {AppState, Platform} from 'react-native';
 import {
   check,
   PERMISSIONS,
@@ -24,6 +24,20 @@ export const PermissionsContext = createContext({} as PermissionsContextProps);
 
 export const PermissionsProvider = ({children}: any) => {
   const [permissions, setPermissions] = useState(permisionInitState);
+
+  //con este useEffect siempre se el status
+  //si se sale de la app en iOS -> inactive , en Android -> background
+  useEffect(() => {
+    AppState.addEventListener('change', state => {
+      if (state !== 'active') return;
+
+      // si esta la app esta active reviso los permisos
+      checkLocatioinPermisson();
+    });
+
+    //return () => AppState.removeEventListener
+  }, []);
+
   const askLocationPermissioins = async () => {
     let permissionsStatus: PermissionStatus;
     if (Platform.OS == 'ios') {
@@ -40,7 +54,18 @@ export const PermissionsProvider = ({children}: any) => {
       locationStatus: permissionsStatus,
     });
   };
-  const checkLocatioinPermisson = () => {};
+  const checkLocatioinPermisson = async () => {
+    let permissionsStatus: PermissionStatus;
+    if (Platform.OS == 'ios') {
+      permissionsStatus = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+    } else {
+      permissionsStatus = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+    }
+    setPermissions({
+      ...permissions,
+      locationStatus: permissionsStatus,
+    });
+  };
   return (
     <PermissionsContext.Provider
       value={{permissions, askLocationPermissioins, checkLocatioinPermisson}}>
