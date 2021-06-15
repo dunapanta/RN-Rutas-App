@@ -25,7 +25,7 @@ export const PermissionsContext = createContext({} as PermissionsContextProps);
 export const PermissionsProvider = ({children}: any) => {
   const [permissions, setPermissions] = useState(permisionInitState);
 
-  //con este useEffect siempre se el status
+  //con este useEffect siempre el permiso que tiene o que otorgo el usuario
   //si se sale de la app en iOS -> inactive , en Android -> background
   useEffect(() => {
     AppState.addEventListener('change', state => {
