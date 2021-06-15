@@ -35,8 +35,14 @@
 			</dict>
 		</dict>
 	</dict>
+
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Es necesario saber su ubicación</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Es necesario saber su ubicación</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+  	<string>Es necesario saber su ubicación</string>
+
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
