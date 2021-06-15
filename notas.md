@@ -99,9 +99,40 @@ pod 'Permission-LocationAccuracy', :path => "#{permissions_path}/LocationAccurac
   <key>NSLocationWhenInUseUsageDescription</key>
   <string>YOUR TEXT</string>
 ```
+
 - `npx pod-install`
 
 ## Clase 279 Solicitar y Revisar Permisos
+
+- Importo lo que necesito
+
+```
+import {
+  check,
+  PERMISSIONS,
+  PermissionStatus,
+  request,
+} from 'react-native-permissions';
+```
+
+- Pregunto Permiso Usuario
+
+```
+const checkLocationPermission = async () => {
+    let permissionsStatus: PermissionStatus;
+    if (Platform.OS == 'ios') {
+      //permissionsStatus = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+      //preguntar po permiso
+      permissionsStatus = await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+    } else {
+      //permissionsStatus = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+      permissionsStatus = await request(
+        PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      );
+    }
+    console.log({permissionsStatus});
+  };
+```
 
 <!-- > ### Aplicación realizada con React Native consiste en una aplicación tipo Pokedex -->
 
