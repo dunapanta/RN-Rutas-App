@@ -3,13 +3,13 @@
 ## Clase 275 Instalacion Iconos
 
 `yarn add react-native-vector-icons`
-
+`yarn add -D @types/react-native-vector-icons`
 ### iOS
 
 - abrir con Fiinder node_modules/react-native-vector-icons/Fonts
 - abrir en Xcode --> ios/nombreProyecto.xcworkspace
-- en Xcode clic derecho enel proyecto RNRutasApp new group llamado Fonts
-- arrastro las fuentes que voy a utilizar ej Ionicons.ttf check copy items if needed ----> Aceptar
+- en Xcode clic derecho en el proyecto RNRutasApp new group llamado Fonts
+- arrastro las fuentes que voy a utilizar ej Ionicons.ttf check en copy items if needed ----> Aceptar
 - Abro como codigo el archivo info.plist
 - antes de que termine la etiqueta `</dict>` pego
 

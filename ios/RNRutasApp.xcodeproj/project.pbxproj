@@ -37,6 +37,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNRutasApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNRutasApp/main.m; sourceTree = "<group>"; };
 		43822ADD4F9CA4E2A9F5680B /* libPods-RNRutasApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNRutasApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EC6DDF22678FA3A00F3296D /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		70760BAC91BD77F444C6ECE6 /* Pods-RNRutasApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNRutasApp.debug.xcconfig"; path = "Target Support Files/Pods-RNRutasApp/Pods-RNRutasApp.debug.xcconfig"; sourceTree = "<group>"; };
 		752EFFA435114D5D4AD32518 /* Pods-RNRutasApp-RNRutasAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNRutasApp-RNRutasAppTests.release.xcconfig"; path = "Target Support Files/Pods-RNRutasApp-RNRutasAppTests/Pods-RNRutasApp-RNRutasAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RNRutasApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 				F307615036F314D5481A5A00 /* Pods-RNRutasApp-RNRutasAppTests.debug.xcconfig */,
 				752EFFA435114D5D4AD32518 /* Pods-RNRutasApp-RNRutasAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -118,6 +118,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5EC6DDF12678F9F300F3296D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5EC6DDF22678FA3A00F3296D /* Ionicons.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +136,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				5EC6DDF12678F9F300F3296D /* Fonts */,
 				13B07FAE1A68108700A75B9A /* RNRutasApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* RNRutasAppTests */,
