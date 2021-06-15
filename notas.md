@@ -61,6 +61,20 @@ const App = () => {
 
 - Creo Navigator y lo utilizo en App
 
+## Clase 277 Configuracion inicial de Permisos GPS Android
+- Paquete para permisos
+- https://www.npmjs.com/package/react-native-permissions
+- `yarn add react-native-permissions`
+ - En la ruta android/app/src/main/AndroidManifest.xml
+ - Para permisos de localización pego
+
+```
+  <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+```
+- Usando este paquete existen 5 posibilidades con los permisos `RESULTS.UNAVAILABLE`, `RESULTS.DENIED`, `RESULTS.GRANTED`, `RESULTS.LIMITED` y `RESULTS.BLOCKED`
+
 <!-- > ### Aplicación realizada con React Native consiste en una aplicación tipo Pokedex -->
 
 <!-- - Ejecuta `cd RN-Pokedex`
