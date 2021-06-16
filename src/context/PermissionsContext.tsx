@@ -2,6 +2,7 @@ import React, {createContext, useEffect, useState} from 'react';
 import {AppState, Platform} from 'react-native';
 import {
   check,
+  openSettings,
   PERMISSIONS,
   PermissionStatus,
   request,
@@ -49,6 +50,12 @@ export const PermissionsProvider = ({children}: any) => {
         PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
       );
     }
+    //En caso en que el usuario nego el permiso es decir esta blocked
+    //se debe redirigir para que lo habilite manualmente
+    if (permissionsStatus === 'blocked') {
+      openSettings();
+    }
+
     setPermissions({
       ...permissions,
       locationStatus: permissionsStatus,
