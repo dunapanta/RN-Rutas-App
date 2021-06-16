@@ -26,17 +26,26 @@ export const PermissionsContext = createContext({} as PermissionsContextProps);
 export const PermissionsProvider = ({children}: any) => {
   const [permissions, setPermissions] = useState(permisionInitState);
 
+  const handleAppStateChange = (state: string) => {
+    if (state !== 'active') return;
+
+    // si esta la app esta active reviso los permisos
+    checkLocatioinPermisson();
+  };
+
   //con este useEffect siempre el permiso que tiene o que otorgo el usuario
   //si se sale de la app en iOS -> inactive , en Android -> background
   useEffect(() => {
-    AppState.addEventListener('change', state => {
-      if (state !== 'active') return;
+    //Tengo que hacerlo asi porque despues da error en iOS al iniciar la app
+    //o en Android cunado presiono atras y vuelvo a entrar a la app
+    handleAppStateChange(AppState.currentState);
 
-      // si esta la app esta active reviso los permisos
-      checkLocatioinPermisson();
-    });
+    AppState.addEventListener('change', handleAppStateChange);
 
-    //return () => AppState.removeEventListener
+    return () => {
+      console.log('remove ' + AppState.currentState);
+      AppState.removeEventListener('change', handleAppStateChange);
+    };
   }, []);
 
   const askLocationPermissioins = async () => {
@@ -65,8 +74,10 @@ export const PermissionsProvider = ({children}: any) => {
     let permissionsStatus: PermissionStatus;
     if (Platform.OS == 'ios') {
       permissionsStatus = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+      //console.log('IOS', permissionsStatus);
     } else {
       permissionsStatus = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+      //console.log('ANDRID', permissionsStatus);
     }
     setPermissions({
       ...permissions,
