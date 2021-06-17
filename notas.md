@@ -134,6 +134,49 @@ const checkLocationPermission = async () => {
   };
 ```
 
+## Clase 290 Mapas
+
+- https://github.com/react-native-maps/react-native-maps
+- Instalacion `yarn add react-native-maps -E`
+- Creo cuenta en https://developers.google.com/maps/documentation/ios-sdk/get-api-key
+- Creo nuevo proyecto
+- En Panel --> Habilitar API y Servicios
+- Selecciono y habilito Maps SDK for Android y Maps SDK for iOS
+- Clic en Credenciales
+- Clic en Credenciales en la sección API y servicios
+- Click CREAR CREDENCIALES ---> Clave API
+- Copio API key
+- Ojo hay varias opciones para restringir el API
+- En build.gradle en ext pegar playServicesVersion = `"17.0.0"`
+- Pegar en android/app/build.gradle en la parte de dependencies
+
+```
+implementation(project(':react-native-maps')){
+       exclude group: 'com.google.android.gms', module: 'play-services-base'
+       exclude group: 'com.google.android.gms', module: 'play-services-maps'
+   }
+   implementation 'com.google.android.gms:play-services-base:17.2.1'
+   implementation 'com.google.android.gms:play-services-maps:17.0.0'
+```
+
+- Agregar el API key en android/app/src/main/AndroidManifest.xml
+
+```
+<application>
+   <!-- You will only need to add this meta-data tag, but make sure it's a child of application -->
+   <meta-data
+     android:name="com.google.android.geo.API_KEY"
+     android:value="Your Google maps API Key Here"/>
+
+   <!-- You will also only need to add this uses-library tag -->
+   <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+</application>
+```
+
+- `npx react-native run-android`
+
+## Clase 292 Android Configuración Google Maps
+
 <!-- > ### Aplicación realizada con React Native consiste en una aplicación tipo Pokedex -->
 
 <!-- - Ejecuta `cd RN-Pokedex`
