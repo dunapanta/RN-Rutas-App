@@ -147,6 +147,9 @@ const checkLocationPermission = async () => {
 - Click CREAR CREDENCIALES ---> Clave API
 - Copio API key
 - Ojo hay varias opciones para restringir el API
+
+## Clase 292 Android Configuración Google Maps
+
 - En build.gradle en ext pegar playServicesVersion = `"17.0.0"`
 - Pegar en android/app/build.gradle en la parte de dependencies
 
@@ -175,7 +178,25 @@ implementation(project(':react-native-maps')){
 
 - `npx react-native run-android`
 
-## Clase 292 Android Configuración Google Maps
+## Clase 293 iOS Configuración Google Maps
+
+- `npx pod-install`
+- Habilitar google Maps en `AppDelegate.m` y pego
+  `#import <GoogleMaps/GoogleMaps.h>`
+- En el mismo archivo busco la funcion
+  `(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`
+
+y pego con el API key ´[GMSServices provideAPIKey:@"_YOUR_API_KEY_"];´
+
+- En Podfile arriba de ´use_native_modules!´ pego
+
+```
+rn_maps_path = '../node_modules/react-native-maps'
+pod 'react-native-google-maps', :path => rn_maps_path
+```
+
+- `npx pod-install`
+- En MapView utilizar `provider={PROVIDER_GOOGLE}`
 
 <!-- > ### Aplicación realizada con React Native consiste en una aplicación tipo Pokedex -->
 
