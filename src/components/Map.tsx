@@ -2,6 +2,7 @@ import React from 'react';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useLocation} from '../hooks/useLocation';
 import {LoadingScreen} from '../screens/LoadingScreen';
+import {Fab} from './Fab';
 
 export const Map = () => {
   const {hasLocation, initialPosition} = useLocation();
@@ -33,6 +34,15 @@ export const Map = () => {
           description="descripcion marcador"
         /> */}
       </MapView>
+      <Fab
+        iconName="star-outline"
+        onPress={() => {}}
+        style={{
+          position: 'absolute',
+          bottom: 20,
+          right: 20,
+        }}
+      />
     </>
   );
 };
