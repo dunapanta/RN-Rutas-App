@@ -1,12 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import Geolocation from '@react-native-community/geolocation';
 
 export const Map = () => {
+  useEffect(() => {
+    Geolocation.getCurrentPosition(
+      info => console.log(info),
+      err => console.log(err),
+      {
+        enableHighAccuracy: true,
+        timeout: 2000,
+        maximumAge: 1000,
+      },
+    );
+  }, []);
   return (
     <>
       <MapView
         style={{flex: 1}}
         //provider={PROVIDER_GOOGLE}
+        showsUserLocation
         initialRegion={{
           latitude: 37.78825,
           longitude: -122.4324,

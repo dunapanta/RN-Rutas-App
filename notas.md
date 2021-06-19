@@ -198,6 +198,17 @@ pod 'react-native-google-maps', :path => rn_maps_path
 - `npx pod-install`
 - En MapView utilizar `provider={PROVIDER_GOOGLE}`
 
+## Clase 298 Obtener geolocalizacion del usuario
+
+- https://github.com/react-native-geolocation/react-native-geolocation
+- `yarn add @react-native-community/geolocation`
+- `npx pod-install`
+  ´´´
+  import Geolocation from '@react-native-community/geolocation';
+
+Geolocation.getCurrentPosition(info => console.log(info));
+´´´
+
 <!-- > ### Aplicación realizada con React Native consiste en una aplicación tipo Pokedex -->
 
 <!-- - Ejecuta `cd RN-Pokedex`
