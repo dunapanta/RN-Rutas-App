@@ -1,12 +1,33 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useLocation} from '../hooks/useLocation';
 import {LoadingScreen} from '../screens/LoadingScreen';
 import {Fab} from './Fab';
 
 export const Map = () => {
-  const {hasLocation, initialPosition, getCurrentLocation} = useLocation();
+  const {
+    hasLocation,
+    initialPosition,
+    userLocation,
+    getCurrentLocation,
+    followUserLocation,
+  } = useLocation();
   const mapViewRef = useRef<MapView>();
+
+  useEffect(() => {
+    followUserLocation();
+
+    return () => {
+      //Cancelar seguimiento
+    };
+  }, []);
+
+  useEffect(() => {
+    //const {latitude, longitude} = userLocation;
+    mapViewRef.current?.animateCamera({
+      center: userLocation,
+    });
+  }, [userLocation]);
 
   const centerPosition = async () => {
     const location = await getCurrentLocation();
